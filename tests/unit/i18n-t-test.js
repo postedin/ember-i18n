@@ -46,7 +46,7 @@ module('I18nService#t', function(hooks) {
 
   test('returns "missing translation" translations', function(assert) {
     const result = this.owner.factoryFor('service:i18n').create({ locale: 'en' }).t('not.yet.translated', {});
-    assert.equal('Missing translation: not.yet.translated', result);
+    assert.equal(result, 'Missing translation: not.yet.translated');
   });
 
   test('warns on the presence of htmlSafe and locale', function(assert) {
@@ -127,7 +127,7 @@ module('I18nService#t', function(hooks) {
 
   test("check unknown locale", function(assert) {
     const result = this.owner.factoryFor('service:i18n').create({ locale: 'uy' }).t('not.yet.translated', {count: 2});
-    assert.equal('Missing translation: not.yet.translated', result);
+    assert.equal(result, 'Missing translation: not.yet.translated');
   });
 
   test('provided default translation works as expected when locale is default', function(assert) {

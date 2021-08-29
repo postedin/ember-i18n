@@ -39,9 +39,9 @@ export default Parent.extend(Evented, {
 
     const locale = this._locale;
     assert("I18n: Cannot translate when locale is null", locale);
-    const count = get(data, 'count');
+    const count = data.count;
 
-    const defaults = makeArray(get(data, 'default'));
+    const defaults = makeArray(data.default);
 
     defaults.unshift(key);
     const template = locale.getCompiledTemplate(defaults, count);
@@ -57,7 +57,7 @@ export default Parent.extend(Evented, {
   exists(key, data = {}) {
     const locale = this._locale;
     assert("I18n: Cannot check existance when locale is null", locale);
-    const count = get(data, 'count');
+    const count = data.count;
 
     const translation = locale.findTranslation(makeArray(key), count);
     return typeOf(translation.result) !== 'undefined' && !translation.result._isMissing;
