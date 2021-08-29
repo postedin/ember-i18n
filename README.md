@@ -1,6 +1,6 @@
-## Ember-I18n - Internationalization for Ember
+# Temp maintained ember-i18n
 
-[![Build Status](https://travis-ci.org/jamesarosen/ember-i18n.svg?branch=master)](https://travis-ci.org/jamesarosen/ember-i18n)
+## Ember-I18n - Internationalization for Ember
 
 Documentation is in the [wiki](https://github.com/jamesarosen/ember-i18n/wiki). Recommended reading:
 
