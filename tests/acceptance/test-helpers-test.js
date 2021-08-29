@@ -1,11 +1,12 @@
+import { visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 
 module('Acceptance | {{t}} Helper', function(hooks) {
   setupApplicationTest(hooks);
 
-  hooks.beforeEach(function() {
-    visit('/');
+  hooks.beforeEach(async function() {
+    await visit('/');
   });
 
   test("t test helper", function(assert) {
