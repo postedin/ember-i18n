@@ -37,7 +37,7 @@ export default Parent.extend(Evented, {
       until: '5.0.0'
     });
 
-    const locale = this.get('_locale');
+    const locale = this._locale;
     assert("I18n: Cannot translate when locale is null", locale);
     const count = get(data, 'count');
 
@@ -47,7 +47,7 @@ export default Parent.extend(Evented, {
     const template = locale.getCompiledTemplate(defaults, count);
 
     if (template._isMissing) {
-      this.trigger('missing', this.get('locale'), key, data);
+      this.trigger('missing', this.locale, key, data);
     }
 
     return template(data);
@@ -55,7 +55,7 @@ export default Parent.extend(Evented, {
 
   // @public
   exists(key, data = {}) {
-    const locale = this.get('_locale');
+    const locale = this._locale;
     assert("I18n: Cannot check existance when locale is null", locale);
     const count = get(data, 'count');
 
@@ -68,8 +68,8 @@ export default Parent.extend(Evented, {
     addTranslations(locale, translations, getOwner(this));
     this._addLocale(locale);
 
-    if (this.get('locale').indexOf(locale) === 0) {
-      this.get('_locale').rebuild();
+    if (this.locale.indexOf(locale) === 0) {
+      this._locale.rebuild();
     }
   },
 
@@ -78,7 +78,7 @@ export default Parent.extend(Evented, {
     let owner = getOwner(this);
     let ENV = owner.factoryFor('config:environment').class;
 
-    if (this.get('locale') == null) {
+    if (this.locale == null) {
       var defaultLocale = (ENV.i18n || {}).defaultLocale;
       if (defaultLocale == null) {
         warn('ember-i18n did not find a default locale; falling back to "en".', false, {
@@ -95,12 +95,12 @@ export default Parent.extend(Evented, {
   //
   // adds a runtime locale to the array of locales on disk
   _addLocale(locale) {
-    this.get('locales').addObject(locale);
+    this.locales.addObject(locale);
   },
 
   _locale: computed('locale', function() {
-    const locale = this.get('locale');
+    const locale = this.locale;
 
-    return locale ? new Locale(this.get('locale'), getOwner(this)) : null;
+    return locale ? new Locale(this.locale, getOwner(this)) : null;
   })
 });

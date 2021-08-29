@@ -17,7 +17,7 @@ export default Helper.extend({
   compute([key, contextObject = {}], interpolations) {
     const mergedInterpolations = mergedContext(contextObject, interpolations);
 
-    const i18n = get(this, 'i18n');
+    const i18n = this.i18n;
     return i18n.t(key, mergedInterpolations);
   },
 

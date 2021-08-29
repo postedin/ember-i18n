@@ -70,7 +70,7 @@ module('t helper', function(hooks) {
 
     this.set('contextObject', computed('soup', function() {
       return {
-        soup: this.get('soup')
+        soup: this.soup
       };
     }));
 
@@ -88,7 +88,7 @@ module('t helper', function(hooks) {
 
     this.set('contextObject', computed('soup', function() {
       return {
-        soup: this.get('soup')
+        soup: this.soup
       };
     }));
 
@@ -107,7 +107,7 @@ module('t helper', function(hooks) {
 
     this.set('contextObject', computed('entreeFromContext', function() {
       return {
-        soup: this.get('entreeFromContext')
+        soup: this.entreeFromContext
       };
     }));
 
