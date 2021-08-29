@@ -11,17 +11,18 @@ function mergedContext(objectContext, hashContext) {
   });
 }
 
-export default Helper.extend({
-  i18n: service(),
+export default class THelper extends Helper {
+  i18n = service();
 
   compute([key, contextObject = {}], interpolations) {
     const mergedInterpolations = mergedContext(contextObject, interpolations);
 
     const i18n = this.i18n;
     return i18n.t(key, mergedInterpolations);
-  },
+  }
 
-  _recomputeOnLocaleChange: observer('i18n.locale', function() {
+  // eslint-disable-next-line ember/no-observers
+  _recomputeOnLocaleChange = observer('i18n.locale', function() {
     this.recompute();
   })
-});
+}

@@ -1,5 +1,5 @@
 import Service from '@ember/service';
-import EmberObject, { get, computed } from '@ember/object';
+import EmberObject, { computed } from '@ember/object';
 import { makeArray } from '@ember/array';
 import Evented, { on } from '@ember/object/evented';
 import { typeOf } from '@ember/utils';

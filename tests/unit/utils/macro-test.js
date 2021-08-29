@@ -10,6 +10,7 @@ module('translationMacro', function(hooks) {
   hooks.beforeEach(function() {
     const i18n = this.owner.factoryFor('service:i18n').create({ locale: 'en' });
 
+    // eslint-disable-next-line ember/no-classic-classes
     this.object = EmberObject.extend({
       i18n: i18n,
 
