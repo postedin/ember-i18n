@@ -14,7 +14,7 @@ module('Integration | {{t}} Helper', function (hooks) {
     `);
 
     assert.equal(t("pluralized.translation", { count: 1 }), "One Click", "test-helpers t returns translation");
-    assert.equal(this.element.querySelector('#t-target').textContent, t("pluralized.translation", { count: 1 }));
+    assert.dom(this.element.querySelector('#t-target')).hasText(t("pluralized.translation", { count: 1 }));
   });
 
   test("expectTranslation test helper", async function (assert) {
