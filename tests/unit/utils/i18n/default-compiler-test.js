@@ -1,8 +1,6 @@
-import Ember from 'ember';
+import { isHTMLSafe, htmlSafe } from '@ember/template';
 import { module, test } from 'qunit';
 import { compileTemplate } from 'ember-i18n';
-
-const { htmlSafe, isHTMLSafe } = Ember.String;
 
 module('compile-template');
 

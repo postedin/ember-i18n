@@ -1,6 +1,5 @@
-import Ember from "ember";
-const { assert, typeOf, warn } = Ember;
-const assign = Ember.assign || Ember.merge;
+import { typeOf } from '@ember/utils';
+import { warn, assert } from '@ember/debug';
 
 // @private
 //
@@ -122,7 +121,7 @@ function getFlattenedTranslations(id, owner) {
 
   const parentId = parentLocale(id);
   if (parentId) {
-    assign(result, getFlattenedTranslations(parentId, owner));
+    Object.assign(result, getFlattenedTranslations(parentId, owner));
   }
 
   let envConfig = owner.factoryFor('config:environment').class;
@@ -132,12 +131,12 @@ function getFlattenedTranslations(id, owner) {
   if (defaultFallback && defaultLocale && defaultLocale !== id) {
     let defaultFactory = owner.factoryFor(`locale:${defaultLocale}/translations`);
     let defaultTranslations = defaultFactory && defaultFactory.class;
-    assign(result, withFlattenedKeys(defaultTranslations || {}));
+    Object.assign(result, withFlattenedKeys(defaultTranslations || {}));
   }
 
   let factory = owner.factoryFor(`locale:${id}/translations`);
   let translations = factory && factory.class;
-  assign(result, withFlattenedKeys(translations || {}));
+  Object.assign(result, withFlattenedKeys(translations || {}));
 
   return result;
 }

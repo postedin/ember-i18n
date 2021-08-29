@@ -1,7 +1,3 @@
-import Ember from "ember";
-
-const assign = Ember.assign || Ember.merge;
-
 export default function addTranslations(locale, newTranslations, owner) {
   const key = `locale:${locale}/translations`;
   let factory = owner.factoryFor(key);
@@ -12,5 +8,5 @@ export default function addTranslations(locale, newTranslations, owner) {
     owner.register(key, existingTranslations);
   }
 
-  assign(existingTranslations, newTranslations);
+  Object.assign(existingTranslations, newTranslations);
 }

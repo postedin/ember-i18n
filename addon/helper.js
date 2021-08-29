@@ -1,6 +1,6 @@
-import Ember from "ember";
-
-const { get, inject, Helper, Object: EmberObject, observer } = Ember;
+import { inject as service } from '@ember/service';
+import Helper from '@ember/component/helper';
+import EmberObject, { observer, get } from '@ember/object';
 
 function mergedContext(objectContext, hashContext) {
   return EmberObject.create({
@@ -12,7 +12,7 @@ function mergedContext(objectContext, hashContext) {
 }
 
 export default Helper.extend({
-  i18n: inject.service(),
+  i18n: service(),
 
   compute([key, contextObject = {}], interpolations) {
     const mergedInterpolations = mergedContext(contextObject, interpolations);

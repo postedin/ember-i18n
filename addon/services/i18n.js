@@ -1,10 +1,16 @@
+import Service from '@ember/service';
+import EmberObject, { get, computed } from '@ember/object';
+import { makeArray } from '@ember/array';
+import Evented, { on } from '@ember/object/evented';
+import { typeOf } from '@ember/utils';
+import { warn, assert } from '@ember/debug';
+import { getOwner } from '@ember/application';
 import Ember from "ember";
 import Locale from "../utils/locale";
 import addTranslations from "../utils/add-translations";
 import getLocales from "../utils/get-locales";
 
-const { assert, computed, get, Evented, makeArray, on, typeOf, warn, getOwner } = Ember;
-const Parent = Ember.Service || Ember.Object;
+const Parent = Service || EmberObject;
 
 // @public
 export default Parent.extend(Evented, {

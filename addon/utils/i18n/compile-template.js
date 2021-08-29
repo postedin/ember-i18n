@@ -1,7 +1,7 @@
+import { htmlSafe } from '@ember/template';
+import { get } from '@ember/object';
 import Ember from "ember";
 
-const htmlSafe = Ember.String.htmlSafe;
-const get = Ember.get;
 const escapeExpression = Ember.Handlebars.Utils.escapeExpression;
 const tripleStache = /\{\{\{\s*(.*?)\s*\}\}\}/g;
 const doubleStache = /\{\{\s*(.*?)\s*\}\}/g;

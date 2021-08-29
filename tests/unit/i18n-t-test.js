@@ -1,7 +1,10 @@
+import { run } from '@ember/runloop';
 import Ember from 'ember';
 import { moduleFor, test } from 'ember-qunit';
 
-const { run, deprecate:originalDeprecate } = Ember;
+const {
+  deprecate:originalDeprecate
+} = Ember;
 
 moduleFor('service:i18n', 'I18nService#t', {
   integration: true,

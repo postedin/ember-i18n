@@ -1,4 +1,5 @@
-import Ember from 'ember';
+import { run } from '@ember/runloop';
+import EmberObject from '@ember/object';
 import { moduleFor, test } from 'ember-qunit';
 import { translationMacro as t } from 'ember-i18n';
 
@@ -8,7 +9,7 @@ moduleFor('service:i18n', 'translationMacro', {
   beforeEach() {
     const i18n = this.subject({ locale: 'en' });
 
-    this.object = Ember.Object.extend({
+    this.object = EmberObject.extend({
       i18n: i18n,
 
       numberClicks: 9,
@@ -29,12 +30,12 @@ test('defines a computed property that translates with interpolations', function
 });
 
 test('defines a computed property with dependencies', function(assert) {
-  Ember.run(this.object, 'set', 'numberClicks', 13);
+  run(this.object, 'set', 'numberClicks', 13);
   assert.equal(this.object.get('tMacroProperty2'), 'Clicks: 13');
 });
 
 test('defines a computed property that depends on the locale', function(assert) {
   assert.equal(this.object.get('tMacroProperty1'), 'text with no interpolations');
-  Ember.run(this.object, 'set', 'i18n.locale', 'es');
+  run(this.object, 'set', 'i18n.locale', 'es');
   assert.equal(this.object.get('tMacroProperty1'), 'texto sin interpolaciones');
 });

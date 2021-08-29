@@ -1,13 +1,14 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Helper from '@ember/component/helper';
+import { run } from '@ember/runloop';
 import hbs from 'htmlbars-inline-precompile';
 import { moduleForComponent, test } from 'ember-qunit';
-const { run } = Ember;
 
 moduleForComponent('no-such-component', 't helper', {
   integration: true,
 
   beforeEach() {
-    if (Ember.Helper == null) {
+    if (Helper == null) {
       const initializer = this.container.lookupFactory('initializer:ember-i18n-legacy-helper');
       initializer.initialize(this.registry);
     }
@@ -65,7 +66,7 @@ test('interpolations with passed context', function(assert) {
   this.addTranslations('en', { 'bowl of soup': 'A bowl of {{soup}}' });
   this.set('soup', 'bisque');
 
-  this.set('contextObject', Ember.computed('soup', function() {
+  this.set('contextObject', computed('soup', function() {
     return {
       soup: this.get('soup')
     };
@@ -83,7 +84,7 @@ test('interpolations with passed context and a hash', function(assert) {
   this.set('soup', 'bisque');
   this.set('salad', 'mixed greens');
 
-  this.set('contextObject', Ember.computed('soup', function() {
+  this.set('contextObject', computed('soup', function() {
     return {
       soup: this.get('soup')
     };
@@ -102,7 +103,7 @@ test('interpolations with passed context and a hash - hash overrides context', f
   this.set('entreeFromContext', 'steak');
   this.set('entreeFromHash', 'pasta');
 
-  this.set('contextObject', Ember.computed('entreeFromContext', function() {
+  this.set('contextObject', computed('entreeFromContext', function() {
     return {
       soup: this.get('entreeFromContext')
     };
