@@ -1,10 +1,10 @@
-/* eslint-env node */
 'use strict';
+
 var Funnel = require('broccoli-funnel');
 var VersionChecker = require('ember-cli-version-checker');
 
 module.exports = {
-  name: 'ember-i18n',
+  name: require('./package').name,
   isLocalizationFramework: true,
 
   init() {
