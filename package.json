@@ -53,7 +53,6 @@
     "ember-resolver": "^8.0.2",
     "ember-source": "~3.28.0",
     "ember-source-channel-url": "^3.0.0",
-    "ember-string-ishtmlsafe-polyfill": "^2.0.0",
     "ember-template-lint": "^3.6.0",
     "ember-try": "^1.4.0",
     "eslint": "^7.32.0",
@@ -74,9 +73,7 @@
   "dependencies": {
     "broccoli-funnel": "^2.0.1",
     "ember-cli-babel": "^7.26.6",
-    "ember-cli-htmlbars": "^5.7.1",
-    "ember-cli-version-checker": "^2.1.0",
-    "ember-getowner-polyfill": "^2.2.0"
+    "ember-cli-htmlbars": "^5.7.1"
   },
   "ember": {
     "edition": "octane"

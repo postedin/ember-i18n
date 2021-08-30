@@ -12,7 +12,7 @@ function mergedContext(objectContext, hashContext) {
 }
 
 export default class THelper extends Helper {
-  i18n = service();
+  @service i18n;
 
   compute([key, contextObject = {}], interpolations) {
     const mergedInterpolations = mergedContext(contextObject, interpolations);

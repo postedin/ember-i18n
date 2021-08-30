@@ -1,8 +1,7 @@
-/* global t, expectTranslation */
-
 import { visit } from '@ember/test-helpers';
 import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
+import {t, expectTranslation} from 'ember-i18n/test-support';
 
 module('Acceptance | {{t}} Helper', function(hooks) {
   setupApplicationTest(hooks);

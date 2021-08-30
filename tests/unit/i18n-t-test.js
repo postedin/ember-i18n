@@ -1,18 +1,9 @@
 import { run } from '@ember/runloop';
-import Ember from 'ember';
 import { module, test } from 'qunit';
 import { setupTest } from 'ember-qunit';
 
-const {
-  deprecate:originalDeprecate
-} = Ember;
-
 module('I18nService#t', function(hooks) {
   setupTest(hooks);
-
-  hooks.afterEach(function() {
-    Ember.deprecate = originalDeprecate;
-  });
 
   test('falls back to parent locale', function(assert) {
     const i18n = this.owner.factoryFor('service:i18n').create({ locale: 'en-ps' });
@@ -49,31 +40,6 @@ module('I18nService#t', function(hooks) {
     assert.equal(result, 'Missing translation: not.yet.translated');
   });
 
-  test('warns on the presence of htmlSafe and locale', function(assert) {
-    const service = this.owner.lookup('service:i18n');
-    let deprecations = 0;
-
-    Ember.deprecate = function(message, predicate, options = {}) {
-      if (predicate) { return; }
-
-      const { id } = options;
-
-      if (id === 'ember-i18n.reserve-htmlSafe' || id === 'ember-i18n.reserve-locale') {
-        deprecations += 1;
-      }
-    };
-
-    service.t('not.yet.translated', { htmlSafe: true });
-    assert.equal(deprecations, 1);
-
-    service.t('not.yet.translated', { locale: true });
-    assert.equal(deprecations, 2);
-
-    service.t('not.yet.translated');
-    service.t('not.yet.translated', { some: 'other key' });
-    assert.equal(deprecations, 2);
-  });
-
   test('emits "missing" events', function(assert) {
     const i18n = this.owner.factoryFor('service:i18n').create({ locale: 'en' });
     const calls = [];
@@ -90,10 +56,10 @@ module('I18nService#t', function(hooks) {
   });
 
   test('adds RTL markers if the locale calls for it', function(assert) {
-    this.owner.factoryFor('service:i18n').create({ locale: 'en-bw' });
-    const result = this.owner.lookup('service:i18n').t('no.interpolations');
+    const i18n = this.owner.factoryFor('service:i18n').create({ locale: 'en-bw' });
+    const result = i18n.t('no.interpolations');
 
-    assert.equal(result, '\u202Bsnoitalopretni on htiw txet\u202C');
+    assert.equal(result.toString(), '\u202Bsnoitalopretni on htiw txet\u202C');
   });
 
   test("applies pluralization rules from the locale", function(assert) {

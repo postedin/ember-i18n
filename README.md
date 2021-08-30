@@ -2,6 +2,8 @@
 
 ## Ember-I18n - Internationalization for Ember
 
+[![Build Status](https://travis-ci.org/postedin/ember-i18n.svg?branch=main)](https://travis-ci.org/postedin/ember-i18n)
+
 Documentation is in the [wiki](https://github.com/jamesarosen/ember-i18n/wiki). Recommended reading:
 
  * [Installation](https://github.com/jamesarosen/ember-i18n/wiki/Doc:-Installation)

@@ -1,19 +1,17 @@
 import Service from '@ember/service';
-import EmberObject, { computed } from '@ember/object';
+import { get, computed } from '@ember/object';
 import { makeArray } from '@ember/array';
 import Evented, { on } from '@ember/object/evented';
 import { typeOf } from '@ember/utils';
 import { warn, assert } from '@ember/debug';
 import { getOwner } from '@ember/application';
-import Ember from "ember";
 import Locale from "../utils/locale";
 import addTranslations from "../utils/add-translations";
 import getLocales from "../utils/get-locales";
 
-const Parent = Service || EmberObject;
-
 // @public
-export default Parent.extend(Evented, {
+// eslint-disable-next-line ember/no-classic-classes
+export default Service.extend(Evented, {
   // @public
   // The user's locale.
   locale: null,
@@ -27,21 +25,13 @@ export default Parent.extend(Evented, {
   // Returns the translation `key` interpolated with `data`
   // in the current `locale`.
   t(key, data = {}) {
-    Ember.deprecate('locale is a reserved attribute', data['locale'] === undefined, {
-      id: 'ember-i18n.reserve-locale',
-      until: '5.0.0'
-    });
-
-    Ember.deprecate('htmlSafe is a reserved attribute', data['htmlSafe'] === undefined, {
-      id: 'ember-i18n.reserve-htmlSafe',
-      until: '5.0.0'
-    });
-
     const locale = this._locale;
     assert("I18n: Cannot translate when locale is null", locale);
-    const count = data.count;
+    // eslint-disable-next-line ember/no-get
+    const count = get(data, 'count');
 
-    const defaults = makeArray(data.default);
+    // eslint-disable-next-line ember/no-get
+    const defaults = makeArray(get(data, 'default'));
 
     defaults.unshift(key);
     const template = locale.getCompiledTemplate(defaults, count);
@@ -57,7 +47,8 @@ export default Parent.extend(Evented, {
   exists(key, data = {}) {
     const locale = this._locale;
     assert("I18n: Cannot check existance when locale is null", locale);
-    const count = data.count;
+    // eslint-disable-next-line ember/no-get
+    const count = get(data, 'count');
 
     const translation = locale.findTranslation(makeArray(key), count);
     return typeOf(translation.result) !== 'undefined' && !translation.result._isMissing;
