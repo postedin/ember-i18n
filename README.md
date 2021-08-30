@@ -3,6 +3,7 @@
 ## Ember-I18n - Internationalization for Ember
 
 [![Build Status](https://travis-ci.org/postedin/ember-i18n.svg?branch=main)](https://travis-ci.org/postedin/ember-i18n)
+[![CI](https://github.com/postedin/ember-i18n/actions/workflows/ci.yml/badge.svg)](https://github.com/postedin/ember-i18n/actions/workflows/ci.yml)
 
 Documentation is in the [wiki](https://github.com/jamesarosen/ember-i18n/wiki). Recommended reading:
 
